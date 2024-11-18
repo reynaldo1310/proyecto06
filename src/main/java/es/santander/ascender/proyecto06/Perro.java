@@ -5,7 +5,7 @@ public class Perro {
     private double peso;
 
     public Perro(double peso) {
-        //que pasa
+        //que pasa       
         this.peso = peso;
     }
 

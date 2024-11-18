@@ -10,9 +10,9 @@ public class PerroTest {
     void testComer() {
         Perro perro = new Perro(45);
 
-        perro.comer(34,2);
+        perro.comer(34.2);
 
-        assertEquals(79.7, perro getPeso(), perro);
+        assertEquals(79.7, perro.getPeso(), 0.000001);
     }
 
 }
