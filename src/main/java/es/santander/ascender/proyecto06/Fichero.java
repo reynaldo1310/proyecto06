@@ -6,7 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public  abstract class Fichero  implements Closeable {
+public abstract class Fichero  implements Closeable {
 
     //valor = 1;
     //int a, b, c;
@@ -15,27 +15,37 @@ public  abstract class Fichero  implements Closeable {
     public byte[] leer(String nombreFichero) throws IOException {
         int valor;
 
+        byte[] resultado;
 
-        FileInputStream fis = new FileInputStream(nombreFichero);
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        while ((valor = fis.read()) != -1) {
-            baos.write(valor);
+        try (FileInputStream fis = new FileInputStream(nombreFichero);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();)
+            { 
+            while ((valor = fis.read()) != -1) {
+                baos.write(valor);
+            }
+            resultado = baos.toByteArray();
+            
         }
 
-        return baos.toByteArray();
+        return resultado;
     }
     
     public byte[] leerEnBloques(String nombreFichero) throws IOException{
         int cuantos;
         byte[] valores = new byte [4096];
 
-        FileInputStream fis =  new FileInputStream(nombreFichero);
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        while ((cuantos = fis.read(valores)) != -1) {
-            baos.write(valores, 0, cuantos);
-        }
+        byte[] resultado;
 
-        return baos. toByteArray();
+        try (FileInputStream fis = new FileInputStream(nombreFichero);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();)
+            { 
+            while ((cuantos = fis.read(valores)) != -1) { 
+                baos.write(valores, 0, cuantos);
+
+            }
+            resultado = baos.toByteArray();
+        }
+        return resultado;
     }
 
     public void escribir(String nombreFichero, byte[] datos) throws IOException {
@@ -44,12 +54,15 @@ public  abstract class Fichero  implements Closeable {
         fos.write(datos);
     }
 
+
+
     @Override
     public void close() throws IOException {
-        
-        throw new UnsupportedOperationException("Unimplement method 'close'");
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'close'");
     }
-        public abstract void hacerElLunes();
 
+    public abstract void hacerElLunes();
+    
     
 } 

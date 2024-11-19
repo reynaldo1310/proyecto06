@@ -1,4 +1,4 @@
-package es.santander.ascender;
+package es.santander.ascender.proyecto06;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,4 +17,5 @@ public class Arreglo {
         }
         return resultado;
     }
+
 }
