@@ -12,7 +12,7 @@ public class PerroTest {
 
     @Test
     void testComer() {
-        Perro perro = new Perro(45.5);
+        Perro perro = new Perro(1, 45.5);
 
         perro.comer(34.2);
 
