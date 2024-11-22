@@ -3,14 +3,15 @@ package es.santander.ascender.proyecto06.lambda;
 public class Datos {
     private int edad;
     private String nombre;
+    public Datos() {
+            
+    }
 
     public Datos(int edad, String nombre) {
         this.edad = edad;
         this.nombre = nombre;
 
-        public Datos() {
-            
-        }
+
     }
 
     public int getEdad() {
